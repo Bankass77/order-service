@@ -1,0 +1,26 @@
+spring.cloud.config.uri=http://localhost:8888
+management.endpoints.web.exposure.include=*
+spring.application.name=order-service
+server.port=0
+
+eureka.instance.instance-id=${spring.application.name}:${random.uuid}
+
+# DB connexion
+spring.datasource.url=jdbc:postgresql://localhost:5432/${POSTGRES_DB}
+#spring.datasource.username=${POSTGRES_USER}
+#spring.datasource.password=${POSTGRES_PASSWORD}
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+spring.sql.init.mode=always
+###########Vault Configuration###################
+spring.cloud.vault.host=localhost
+spring.cloud.vault.port=8200
+spring.cloud.vault.scheme=http
+spring.cloud.vault.authentication=TOKEN
+spring.cloud.vault.token=hvs.xl5y1zMfNlrryYJFBo1GbyZV
+spring.cloud.vault.application-name=order-service
+###########RabbitMQ#############################
+spring.rabbitmq.host=localhost
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=guest
+spring.rabbitmq.password=guest
