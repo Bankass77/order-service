@@ -16,11 +16,22 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
 
+    /**
+     * @param orderRequest
+     */
     public void placeOrder(OrderRequest orderRequest) {
         var order = mapToOrder(orderRequest);
         orderRepository.save(order);
     }
 
+    /**
+     * Convertit une demande de commande (OrderRequest) en un objet Order.
+     *
+     * @param orderRequest
+     *         l'objet OrderRequest contenant les informations de la commande à convertir. Cet objet inclut les détails nécessaires pour créer une nouvelle
+     *         commande.
+     * @return un nouvel objet Order initialisé avec les données provenant de l'OrderRequest.
+     */
     private Order mapToOrder(OrderRequest orderRequest) {
         Order order = new Order();
         order.setOrderNumber(UUID.randomUUID().toString());
